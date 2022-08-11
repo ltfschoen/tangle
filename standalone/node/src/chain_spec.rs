@@ -194,19 +194,19 @@ pub fn local_testnet_config() -> Result<ChainSpec, String> {
 				],
 				// Initial Chain Ids
 				vec![
-					hex_literal::hex!("010000001389"), // Hermis (Evm, 5001)
+					hex_literal::hex!("010000001389"), // Hermes (Evm, 5001)
 					hex_literal::hex!("01000000138a"), // Athena (Evm, 5002)
 				],
 				// Initial resource Ids
 				vec![
-					// Resource ID for Chain Hermis => Athena
+					// Resource ID for Chain Hermes => Athena
 					(
 						hex_literal::hex!(
 							"0000000000000000e69a847cd5bc0c9480ada0b339d7f0a8cac2b6670000138a"
 						),
 						Default::default(),
 					),
-					// Resource ID for Chain Athena => Hermis
+					// Resource ID for Chain Athena => Hermes
 					(
 						hex_literal::hex!(
 							"0000000000000000d30c8839c1145609e564b986f667b273ddcb849600001389"
@@ -474,7 +474,7 @@ fn testnet_genesis(
 		v_anchor_bn_254: VAnchorBn254Config {
 			max_deposit_amount: 1_000_000 * UNIT,
 			min_withdraw_amount: 0,
-			vanchors: vec![(0, 2)],
+			vanchors: vec![(0, 1)],
 			phantom: Default::default(),
 		},
 	}

@@ -246,6 +246,31 @@ pub fn new_full(mut config: Configuration) -> Result<TaskManager, ServiceError> 
 		None
 	};
 
+	if role.is_authority() {
+		dkg_primitives::utils::insert_controller_account_keys_into_keystore(
+			&config,
+			Some(keystore_container.sync_keystore()),
+		);
+		
+		let dkg_params = dkg_gadget::DKGParams {
+			client: client.clone(),
+			backend: backend.clone(),
+			key_store: Some(keystore_container.sync_keystore()),
+			network: network.clone(),
+			prometheus_registry: prometheus_registry.clone(),
+			base_path,
+			local_keystore: keystore_container.local_keystore(),
+			_block: std::marker::PhantomData::<Block>,
+		};
+
+		// Start the DKG gadget.
+		task_manager.spawn_essential_handle().spawn_blocking(
+			"dkg-gadget",
+			None,
+			dkg_gadget::start_dkg_gadget::<_, _, _>(dkg_params),
+		);
+	}
+
 	let rpc_extensions_builder = {
 		let client = client.clone();
 		let pool = transaction_pool.clone();
@@ -269,26 +294,6 @@ pub fn new_full(mut config: Configuration) -> Result<TaskManager, ServiceError> 
 		config,
 		telemetry: telemetry.as_mut(),
 	})?;
-
-	if role.is_authority() {
-		let dkg_params = dkg_gadget::DKGParams {
-			client: client.clone(),
-			backend: backend.clone(),
-			key_store: Some(keystore_container.sync_keystore()),
-			network: network.clone(),
-			prometheus_registry: prometheus_registry.clone(),
-			base_path,
-			local_keystore: keystore_container.local_keystore(),
-			_block: std::marker::PhantomData::<Block>,
-		};
-
-		// Start the DKG gadget.
-		task_manager.spawn_essential_handle().spawn_blocking(
-			"dkg-gadget",
-			None,
-			dkg_gadget::start_dkg_gadget::<_, _, _>(dkg_params),
-		);
-	}
 
 	if role.is_authority() {
 		let proposer_factory = sc_basic_authorship::ProposerFactory::new(
