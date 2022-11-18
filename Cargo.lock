@@ -1048,7 +1048,6 @@ dependencies = [
 [[package]]
 name = "bls"
 version = "0.2.0"
-source = "git+https://github.com/webb-tools/pallet-eth2-light-client?branch=polkadot-v0.9.30#9fecbfc7d3232fb2516b96f72f3ca1fb23236a44"
 dependencies = [
  "eth2_hashing",
  "eth2_serde_utils",
@@ -2913,31 +2912,8 @@ dependencies = [
 ]
 
 [[package]]
-name = "eth-types"
-version = "0.1.0"
-source = "git+https://github.com/webb-tools/pallet-eth2-light-client?branch=polkadot-v0.9.30#9fecbfc7d3232fb2516b96f72f3ca1fb23236a44"
-dependencies = [
- "derive_more",
- "eth2_serde_utils",
- "eth2_ssz",
- "eth2_ssz_derive",
- "ethereum-types 0.13.1",
- "hex",
- "parity-scale-codec",
- "rlp",
- "rlp-derive",
- "scale-info",
- "serde",
- "sp-std",
- "tiny-keccak",
- "tree_hash",
- "tree_hash_derive",
-]
-
-[[package]]
 name = "eth2_hashing"
 version = "0.3.0"
-source = "git+https://github.com/webb-tools/pallet-eth2-light-client?branch=polkadot-v0.9.30#9fecbfc7d3232fb2516b96f72f3ca1fb23236a44"
 dependencies = [
  "lazy_static",
  "ring",
@@ -2947,7 +2923,6 @@ dependencies = [
 [[package]]
 name = "eth2_serde_utils"
 version = "0.1.1"
-source = "git+https://github.com/webb-tools/pallet-eth2-light-client?branch=polkadot-v0.9.30#9fecbfc7d3232fb2516b96f72f3ca1fb23236a44"
 dependencies = [
  "ethereum-types 0.13.1",
  "hex",
@@ -2958,22 +2933,10 @@ dependencies = [
 [[package]]
 name = "eth2_ssz"
 version = "0.4.1"
-source = "git+https://github.com/webb-tools/pallet-eth2-light-client?branch=polkadot-v0.9.30#9fecbfc7d3232fb2516b96f72f3ca1fb23236a44"
 dependencies = [
  "ethereum-types 0.13.1",
  "itertools 0.10.5",
  "smallvec",
-]
-
-[[package]]
-name = "eth2_ssz_derive"
-version = "0.3.0"
-source = "git+https://github.com/webb-tools/pallet-eth2-light-client?branch=polkadot-v0.9.30#9fecbfc7d3232fb2516b96f72f3ca1fb23236a44"
-dependencies = [
- "darling",
- "proc-macro2",
- "quote",
- "syn",
 ]
 
 [[package]]
@@ -3008,7 +2971,6 @@ dependencies = [
  "fixed-hash",
  "impl-codec",
  "impl-rlp",
- "impl-serde",
  "scale-info",
  "tiny-keccak",
 ]
@@ -3053,7 +3015,6 @@ dependencies = [
  "fixed-hash",
  "impl-codec",
  "impl-rlp",
- "impl-serde",
  "primitive-types 0.11.1",
  "scale-info",
  "uint",
@@ -5562,7 +5523,6 @@ dependencies = [
 [[package]]
 name = "merkle_proof"
 version = "0.2.0"
-source = "git+https://github.com/webb-tools/pallet-eth2-light-client?branch=polkadot-v0.9.30#9fecbfc7d3232fb2516b96f72f3ca1fb23236a44"
 dependencies = [
  "eth2_hashing",
  "ethereum-types 0.13.1",
@@ -6681,21 +6641,28 @@ dependencies = [
 [[package]]
 name = "pallet-eth2-light-client"
 version = "0.1.0"
-source = "git+https://github.com/webb-tools/pallet-eth2-light-client?branch=polkadot-v0.9.30#9fecbfc7d3232fb2516b96f72f3ca1fb23236a44"
 dependencies = [
  "bitvec",
  "bls",
- "eth-types",
+ "derive_more",
+ "eth2_ssz",
  "ethereum-types 0.13.1",
  "frame-support",
  "frame-system",
+ "hex",
  "merkle_proof",
  "pallet-balances",
  "parity-scale-codec",
+ "rlp",
+ "rlp-derive",
  "scale-info",
+ "serde",
+ "sp-core",
  "sp-runtime",
  "sp-std",
+ "tiny-keccak",
  "tree_hash",
+ "tree_hash_derive",
  "webb-proposals",
 ]
 
@@ -10194,7 +10161,6 @@ dependencies = [
 [[package]]
 name = "safe_arith"
 version = "0.1.0"
-source = "git+https://github.com/webb-tools/pallet-eth2-light-client?branch=polkadot-v0.9.30#9fecbfc7d3232fb2516b96f72f3ca1fb23236a44"
 
 [[package]]
 name = "salsa20"
@@ -13117,6 +13083,7 @@ dependencies = [
  "pallet-dkg-proposal-handler",
  "pallet-dkg-proposals",
  "pallet-ecdsa-claims",
+ "pallet-eth2-light-client",
  "pallet-hasher",
  "pallet-identity",
  "pallet-indices",
@@ -13746,7 +13713,6 @@ dependencies = [
 [[package]]
 name = "tree_hash"
 version = "0.4.1"
-source = "git+https://github.com/webb-tools/pallet-eth2-light-client?branch=polkadot-v0.9.30#9fecbfc7d3232fb2516b96f72f3ca1fb23236a44"
 dependencies = [
  "eth2_hashing",
  "ethereum-types 0.13.1",
@@ -13756,7 +13722,6 @@ dependencies = [
 [[package]]
 name = "tree_hash_derive"
 version = "0.4.0"
-source = "git+https://github.com/webb-tools/pallet-eth2-light-client?branch=polkadot-v0.9.30#9fecbfc7d3232fb2516b96f72f3ca1fb23236a44"
 dependencies = [
  "darling",
  "quote",
